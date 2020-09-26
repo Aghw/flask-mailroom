@@ -11,13 +11,21 @@ app = Flask(__name__)
 def home():
     return redirect(url_for('all'))
 
-@app.route('/donations/')
+@app.route('/donations')
 def all():
     donations = Donation.select()
     return render_template('donations.jinja2', donations=donations)
     
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 6738))
-    app.run(host='0.0.0.0', port=port)
+# if __name__ == "__main__":
+#     port = int(os.environ.get("PORT", 6738))
+#     app.run(host='0.0.0.0', port=port)
 
+
+@app.route('/donate', methods=['GET', 'POST'])
+def donate():
+    return render_template('donate.jinja2')
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
