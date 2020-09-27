@@ -1,4 +1,4 @@
-# Deployed web appliction
+# Deployed web appliction on Heroku
 The deployed web application for assignment 1 is found at the address shown below:
 https://warm-beyond-99043.herokuapp.com
 
