@@ -6,8 +6,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from model import Donation, Donor
 
 app = Flask(__name__)
-app.secret_key = b'\x11\x14\x17\x8a\xf8@\x03\xf0\xf9U[\x93"\xfb\x94\x00\x7fGN\xad\x8a~\xb3\x8f'
-
+# app.secret_key = b'\x11\x14\x17\x8a\xf8@\x03\xf0\xf9U[\x93"\xfb\x94\x00\x7fGN\xad\x8a~\xb3\x8f'
+app.secret_key = os.environ.get('SECRET_KEY').encode()
 
 @app.route('/')
 def home():
@@ -18,11 +18,6 @@ def all():
     donations = Donation.select()
     return render_template('donations.jinja2', donations=donations)
     
-
-# if __name__ == "__main__":
-#     port = int(os.environ.get("PORT", 6738))
-#     app.run(host='0.0.0.0', port=port)
-
 
 @app.route('/donate', methods=['GET', 'POST'])
 def donate():
@@ -68,5 +63,5 @@ def save():
     return render_template('save.jinja2', code=code)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 6738))
     app.run(host='0.0.0.0', port=port)
