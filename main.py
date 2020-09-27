@@ -1,9 +1,9 @@
 import os
 import base64
-
+import peewee
 from flask import Flask, render_template, request, redirect, url_for, session
 
-from model import Donation 
+from model import Donation, Donor
 
 app = Flask(__name__)
 app.secret_key = b'\x11\x14\x17\x8a\xf8@\x03\xf0\xf9U[\x93"\xfb\x94\x00\x7fGN\xad\x8a~\xb3\x8f'
@@ -48,12 +48,22 @@ def donate():
 def save():
     donate()
     code = base64.b32encode(os.urandom(8)).decode().strip("=")
-    
-    # amount = session.get('donation_amount', 0)
-    amount = session.get('donation_amount', 0)
 
-    save_donation = Donation(value=amount, donor_id=2)
-    save_donation.save()
+    donor_name = session.get('donor_name', 'XXXX')
+    donor_id = 0
+
+    try:
+        donor = Donor.get(Donor.name == donor_name)
+
+        if donor:
+            donor_id = donor
+        
+        amount = session.get('donation_amount', 0)
+
+        save_donation = Donation(value=amount, donor_id=donor_id)
+        save_donation.save()
+    except peewee.DoesNotExist as missing:
+        print("\nDonor is not found! ", missing)
 
     return render_template('save.jinja2', code=code)
 
