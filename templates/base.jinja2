@@ -11,6 +11,10 @@
 				color: blue;
 			}
 
+			form {
+				margin-left: 25%;
+			}
+
 			label {
 				font-family: "Courier", "Ariel";
 				font-size: 2rem;
@@ -27,6 +31,16 @@
 				color: gray;
 			}
 
+			footer {
+				font-family: "Courier", "Ariel";
+				color: blue;
+				font-size: .9rem;
+			}
+
+			footer p {
+				text-align: center;
+			}
+
 			nav{
 				font-size: 1.5rem;
 				font-family: "Courier", "Ariel";
@@ -34,10 +48,12 @@
 				color: blue;
 			}
 
-			ul {
+
+			.donatoin_list {
 				font-family: "Ariel", "Courier New";
 				font-size: 1rem;
 				color: gray;
+				text-align: left;
 			}
 
 			.command {
@@ -48,15 +64,26 @@
 				color: navy;
 				background-color: orange;
 			}
+			body {
+				text-align: center;
+				margin: 0 10%;
+				border-left: .1rem dotted gray;
+				border-right: .1rem dotted gray;
+			}
 		</style>
 	</head>
 	<body>
 		<nav>
-			<a id="donation_list" href="{{ url_for("all") }}">List of Donations</a>
+			<a id="donation_list" href="{{ url_for("all") }}">Donations</a>
 			<a id="create_donation" href="{{ url_for("donate") }}">Add Donation</a>
 		</nav>
 		<h1>Donations</h1>
 		<h2>{% block subtitle %} {% endblock subtitle %}</h2>
 		{% block content %} {% endblock content %}
+
+		<hr />
 	</body>
+	<footer>
+		<p>Copyright ©2020. Page designed by Asmerom</p>
+	</footer>
 </html>

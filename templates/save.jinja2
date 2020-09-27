@@ -1,0 +1,11 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}Save Donated Amount{% endblock subtitle %}
+
+{% block content %}
+<p>Donor Name: <span id="donor_name"> {{ session.donor_name }}</span></p>
+<p>Donation Amount: <span id="donation_amount"> {{ session.donation_amount }}</span></p>
+
+Completed saving donation in the database. 
+Your donation transaction number is: <span id="code">{{ code }}</span>
+{% endblock content %}

@@ -4,7 +4,9 @@
 
 {% block content %}
     <h3>Donation Information: <span id="donation">Please fill out form</span></h3>
-    <form method="POST">
+
+    
+    <form method="POST" action="{{ url_for('save') }}">
         <table>
             <tr>
                 <td>
@@ -31,8 +33,5 @@
             </tr>
         </table>
     </form>
-
-    <form method="POST" action="{{ url_for('save') }}">
-        <input type="submit" name="donate" value="Save It">
-    </form>
+   
 {% endblock content %}
