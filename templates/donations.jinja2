@@ -4,13 +4,15 @@
 
 {% block content %}
 <div class="card-columns">
-    {% for donation in donations %}
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ donation.donor.name }}</h5>
-                <p class="card-text"> {{ donation.value }}</p>
-         </div>
+    <div class="col-sm-6">
+        {% for donation in donations %}
+            <div class="card bg-primary text-white" style="width: 12rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ donation.donor.name }}</h5>
+                    <p class="card-text"> {{ donation.value }}</p>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock content %}

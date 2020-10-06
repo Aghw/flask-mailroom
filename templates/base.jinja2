@@ -15,7 +15,7 @@
 			}
 
 			form {
-				margin-left: 25%;
+				margin-left: 9%;
 			}
 
 			label {
@@ -44,12 +44,7 @@
 				text-align: center;
 			}
 
-			nav{
-				font-size: 1.5rem;
-				font-family: "Courier", "Ariel";
-				padding: 0 2rem 0 2rem;
-				color: blue;
-			}
+			
 
 			.donatoin_list {
 				font-family: "Ariel", "Courier New";
@@ -69,7 +64,7 @@
 
 			body {
 				text-align: center;
-				margin: 0 10%;
+				margin: 0 25%;
 				border-left: .1rem dotted gray;
 				border-right: .1rem dotted gray;
 			}
@@ -77,9 +72,14 @@
 		</style>
 	</head>
 	<body>
-		<nav>
+		<nav class="navbar navbar-light" style="background-color: #e3f2fd; align:center; margin: 0 auto; border-radius: .7rem;">
 			<a id="donation_list" href="{{ url_for("all") }}">Donations</a>
 			<a id="create_donation" href="{{ url_for("donate") }}">Add Donation</a>
+
+			<form class="form-inline">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
 		</nav>
 		<h1>Donations</h1>
 		<h2>{% block subtitle %} {% endblock subtitle %}</h2>
